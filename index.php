@@ -2,18 +2,32 @@
 require 'vendor/autoload.php';
 $mail_object =& Mail::factory('sendmail', array("sendmail_path" => "/usr/sbin/sendmail"));
 print_r($mail_object);
-$con = mysql_connect("localhost","user","pass");
+echo "<br />";
+$con = mysql_connect("127.9.74.2","adminYs7CBDC","DSXcvk6GWtbe");
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
   }
-sql='CREATE DATABASE test DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;
-';
-mysql_query($sql);
-$sql='CREATE TABLE `test` (`id` INT(255) UNSIGNED NOT NULL AUTO_INCREMENT ,`count` INT(255) UNSIGNED NOT NULL DEFAULT 0,PRIMARY KEY ( `id` ) ) TYPE = innodb;';
-mysql_select_db($mysql_database,$conn);
-$result=mysql_query($sql);
-//echo $sql;
-mysql_close($conn);
-echo "Database connected";
+
+// Create table in my_db database
+mysql_select_db("php", $con);
+$sql = "CREATE TABLE Persons 
+(
+FirstName varchar(15),
+LastName varchar(15),
+Age int
+)";
+mysql_query($sql,$con);
+mysql_query("INSERT INTO Persons (FirstName, LastName, Age) 
+VALUES ('Tina', 'Wang', '30')");
+
+$result = mysql_query("SELECT * FROM Persons");
+
+while($row = mysql_fetch_array($result))
+  {
+  echo $row['FirstName'] . " " . $row['LastName'];
+  echo "<br />";
+  }
+
+mysql_close($con);
 ?>
