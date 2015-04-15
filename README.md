@@ -1,2 +1,2 @@
-# sample-php
-This is a sample php app
+# sample-php-centos7
+This is a sample php centos app

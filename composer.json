@@ -1,0 +1,12 @@
+{
+    "require": {
+        "pear-pear.php.net/Mail": "*",
+        "pear-pear.php.net/xml_serializer": "*"
+    },
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.php.net"
+        }
+    ]
+}
