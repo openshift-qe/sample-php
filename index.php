@@ -9,8 +9,17 @@ if (!$con)
   die('Could not connect: ' . mysql_error());
   }
 
-// Create table in my_db database
-mysql_select_db("php", $con);
+if (mysql_query("CREATE DATABASE test",$con))
+  {
+  echo "Database created";
+  }
+else
+  {
+  echo "Error creating database: " . mysql_error();
+  }
+
+// Create table in test database
+mysql_select_db("test", $con);
 $sql = "CREATE TABLE Persons 
 (
 FirstName varchar(15),

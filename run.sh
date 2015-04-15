@@ -9,4 +9,4 @@ if [ -z "${MYSQL_DATABASE}" ]; then
   export MYSQL_ROOT_PASSWORD=root
 fi
 
-bundle exec php index.php
+exec php index.php
