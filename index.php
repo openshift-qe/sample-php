@@ -1,43 +1,25 @@
 <?php
+
 require 'vendor/autoload.php';
 $mail_object =& Mail::factory('sendmail', array("sendmail_path" => "/usr/sbin/sendmail"));
 print_r($mail_object);
 echo "<br />";
+$con = mysqli_connect("172.17.0.10","user","pass", "root");
+if (!$con)
+  {
+  die('Could not connect: ' . mysqli_connect_error());
+  exit();
+  }
 
-$link = mysqli_connect("172.17.0.10", "user", "pass","root");
+mysqli_query($con,"CREATE TABLE Language LIKE CountryLanguage");
+mysqli_query($con, "INSERT INTO Language VALUES ('DEU', 'Bavarian', 'F', 11.2)");
+mysqli_query($con, "INSERT INTO Language VALUES ('DEU', 'Swabian', 'F', 9.4)");
+mysqli_commit($con);
 
-/* check connection */
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
+if ($result = mysqli_query($conn, "SELECT * FROM Language")) {
+    echo($result);
 
-/* Create table doesn't return a resultset */
-if (mysqli_query($link, "CREATE TEMPORARY TABLE myCity LIKE City") === TRUE) {
-    printf("Table myCity successfully created.\n");
-}
-
-/* Select queries return a resultset */
-if ($result = mysqli_query($link, "SELECT Name FROM City LIMIT 10")) {
-    printf("Select returned %d rows.\n", mysqli_num_rows($result));
-
-    /* free result set */
-    mysqli_free_result($result);
-}
-
-/* If we have to retrieve large amount of data we use MYSQLI_USE_RESULT */
-if ($result = mysqli_query($link, "SELECT * FROM City", MYSQLI_USE_RESULT)) {
-
-    /* Note, that we can't execute any functions which interact with the
-       server until result set was closed. All calls will return an
-       'out of sync' error */
-    if (!mysqli_query($link, "SET @a:='this will not work'")) {
-        printf("Error: %s\n", mysqli_error($link));
-    }
-    mysqli_free_result($result);
-}
-
-mysqli_close($link);
-
+mysqli_close($con);
 
 ?>
+
