@@ -14,7 +14,7 @@ mysqli_query($con, "INSERT INTO Language VALUES ('DEU', 'Bavarian', 'F', 11.2)")
 mysqli_query($con, "INSERT INTO Language VALUES ('DEU', 'Swabian', 'F', 9.4)");
 mysqli_commit($con);
 
-if ($result = mysqli_query($conn, "SELECT * FROM Language")) {
+if ($result = mysqli_query($con, "SELECT * FROM Language")) {
     echo($result);
 }
 mysqli_close($con);
