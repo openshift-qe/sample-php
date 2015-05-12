@@ -11,7 +11,7 @@ if (mysqli_connect_errno()) {
     exit();
 }
 else {
-   printf("Database connection succeeds");
+   printf("Database connection is successful");
 }
 
 ?>
