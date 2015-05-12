@@ -1,5 +1,4 @@
 <?php
-
 require 'vendor/autoload.php';
 $mail_object =& Mail::factory('sendmail', array("sendmail_path" => "/usr/sbin/sendmail"));
 print_r($mail_object);
@@ -8,7 +7,6 @@ $con = mysqli_connect("172.17.0.10","user","pass");
 if (!$con)
   {
   die('Could not connect: ' . mysqli_connect_error());
-  exit();
   }
 
 mysqli_query($con,"CREATE TABLE Language LIKE CountryLanguage");
@@ -18,7 +16,7 @@ mysqli_commit($con);
 
 if ($result = mysqli_query($conn, "SELECT * FROM Language")) {
     echo($result);
-
+}
 mysqli_close($con);
 
 ?>
