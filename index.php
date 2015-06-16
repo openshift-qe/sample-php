@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 @$mail_object =& Mail::factory('sendmail', array("sendmail_path" => "/usr/sbin/sendmail"));
 print_r($mail_object);
 
-$link = mysqli_connect(getenv('DATABASE_SERVICE_HOST'), getenv('MYSQL_USER'), getenv('MYSQL_PASSWORD'), getenv('MYSQL_DATABASE'));
+$link = mysqli_connect('10.1.1.17','userLP7','XOXtvOOP','root');
 
 /* check connection */
 if (mysqli_connect_errno()) {
