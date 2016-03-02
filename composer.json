@@ -8,5 +8,8 @@
             "type": "pear",
             "url": "http://pear.php.net"
         }
-    ]
+    ],
+    "config": {
+        "secure-http": "false"
+    }
 }
